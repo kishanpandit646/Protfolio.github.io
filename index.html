@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kishan Pandit — Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --bg:       #F5F0E8;
+      --bg2:      #EDE8DF;
+      --bg3:      #E3DDD3;
+      --text:     #1a1714;
+      --text2:    #5a5650;
+      --text3:    #9a9590;
+      --border:   #D8D2C8;
+      --c1:       #C4622D;
+      --c2:       #A0522D;
+      --c3:       #3A7D6E;
+      --c4:       #2E6B9E;
+      --c5:       #9E3A5A;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(245,240,232,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+    .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--c1);}
+    .nav-links{display:flex;gap:1.5rem;}
+    .nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;transition:color .2s;}
+    .nav-links a:hover{color:var(--text);}
+    .hero{padding:5rem 2rem 3rem;max-width:900px;margin:0 auto;}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--c1);color:#fff;font-size:0.75rem;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem;}
+    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:1rem;color:var(--text);}
+    .hero h1 span{color:var(--c1);}
+    .hero-sub{font-size:1.05rem;color:var(--text2);max-width:480px;line-height:1.7;margin-bottom:2.5rem;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-primary{background:var(--c1);color:#fff;border:none;padding:12px 28px;border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s,transform .15s;}
+    .btn-primary:hover{opacity:0.88;transform:translateY(-1px);}
+    .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);padding:12px 28px;border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,background .2s;}
+    .btn-secondary:hover{border-color:#aaa;background:var(--bg2);}
+    .accent-bar{display:flex;gap:1rem;padding:0 2rem 2.5rem;max-width:900px;margin:0 auto;flex-wrap:wrap;}
+    .accent-pill{padding:7px 16px;border-radius:30px;font-size:0.78rem;font-weight:500;display:inline-flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--border);color:var(--text2);}
+    .section{padding:3.5rem 2rem;max-width:900px;margin:0 auto;}
+    .section-label{font-size:0.7rem;letter-spacing:3px;color:var(--c3);font-weight:500;text-transform:uppercase;margin-bottom:0.4rem;}
+    .section-title{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:2rem;color:var(--text);}
+    .divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+    .skill-card{border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff;transition:transform .2s,border-color .2s,box-shadow .2s;}
+    .skill-card:hover{transform:translateY(-3px);border-color:#bbb;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+    .skill-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+    .skill-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+    .skill-level{font-size:0.68rem;color:var(--text3);}
+    .skill-name{font-size:0.9rem;font-weight:500;color:var(--text);}
+    .skill-bar{height:3px;background:var(--bg3);border-radius:2px;margin-top:8px;overflow:hidden;}
+    .skill-fill{height:100%;border-radius:2px;}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+    .proj-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:#fff;transition:transform .2s,border-color .2s,box-shadow .2s;}
+    .proj-card:hover{transform:translateY(-3px);border-color:#bbb;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+    .proj-badge{display:inline-flex;align-items:center;gap:6px;font-size:0.65rem;padding:4px 10px;border-radius:20px;margin-bottom:12px;font-weight:500;}
+    .proj-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--text);}
+    .proj-desc{font-size:0.82rem;color:var(--text2);line-height:1.6;}
+    .proj-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+    .proj-tag{font-size:0.65rem;padding:3px 8px;border-radius:4px;background:var(--bg2);color:var(--text2);border:1px solid var(--border);}
+    .proj-links{display:flex;gap:10px;margin-top:14px;}
+    .proj-link{font-size:0.75rem;color:var(--text3);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;}
+    .proj-link:hover{color:var(--c3);}
+    .achieve-list{display:flex;flex-direction:column;gap:14px;}
+    .achieve-item{display:flex;gap:16px;align-items:flex-start;padding:16px;border:1px solid var(--border);border-radius:10px;background:#fff;transition:border-color .2s,box-shadow .2s;}
+    .achieve-item:hover{border-color:#bbb;box-shadow:0 4px 16px rgba(0,0,0,0.05);}
+    .achieve-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+    .achieve-title{font-size:0.92rem;font-weight:500;color:var(--text);margin-bottom:3px;}
+    .achieve-sub{font-size:0.78rem;color:var(--text3);}
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+    .cert-card{padding:16px;border:1px solid var(--border);border-radius:10px;background:#fff;border-left:3px solid var(--c4);display:flex;gap:12px;align-items:flex-start;transition:box-shadow .2s;}
+    .cert-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.05);}
+    .cert-card i{color:var(--c4);margin-top:2px;font-size:14px;}
+    .cert-name{font-size:0.88rem;font-weight:500;margin-bottom:4px;color:var(--text);}
+    .cert-issuer{font-size:0.75rem;color:var(--text3);}
+    .contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:1.5rem;}
+    .contact-chip{display:flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:0.83rem;color:var(--text2);text-decoration:none;transition:border-color .2s,color .2s,box-shadow .2s;}
+    .contact-chip:hover{border-color:#aaa;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+    .contact-chip i{font-size:15px;}
+    .footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:0.78rem;margin-top:2rem;background:var(--bg2);}
+    .footer span{color:var(--c1);}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">KP/</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">
+    <i class="fa-solid fa-graduation-cap"></i>
+    B.Tech CSE Student
+  </div>
+  <h1>Kishan<br><span>Pandit.</span></h1>
+  <p class="hero-sub">I am a B.Tech student with a strong interest in technology and innovation. I am passionate about learning how things work and applying my knowledge to solve real-world problems. I enjoy exploring new concepts in my field and continuously improving my technical and problem-solving skills. I am motivated to grow as an engineer and contribute to impactful projects in the future.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+    <a href="#contact" class="btn-secondary"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+  </div>
+</section>
+
+<div class="accent-bar">
+  <div class="accent-pill"><i class="fa-solid fa-book-open" style="font-size:12px;color:var(--c1);"></i> Currently in B.Tech</div>
+  <div class="accent-pill"><i class="fa-solid fa-circle" style="font-size:8px;color:var(--c3);"></i> Open to Internships</div>
+  <div class="accent-pill"><i class="fa-solid fa-circle" style="font-size:8px;color:var(--c4);"></i> Innovate to learn</div>
+  <div class="accent-pill"><i class="fa-solid fa-location-dot" style="font-size:12px;color:var(--c4);"></i> Jaipur, Rajasthan</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-label">What I know</div>
+  <div class="section-title">Skills</div>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#FFF8E1;color:#B8860B;"><i class="fa-brands fa-js"></i></div>
+        <span class="skill-level">Intermediate</span>
+      </div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:65%;background:#B8860B;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#E8F5EF;color:#3A7D6E;"><i class="fa-brands fa-python"></i></div>
+        <span class="skill-level">Intermediate</span>
+      </div>
+      <div class="skill-name">Python</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:70%;background:#3A7D6E;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#FDF0E8;color:#C4622D;"><i class="fa-solid fa-c"></i></div>
+        <span class="skill-level">Beginner</span>
+      </div>
+      <div class="skill-name">C / C++</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:45%;background:#C4622D;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#E8F0F8;color:#2E6B9E;"><i class="fa-brands fa-react"></i></div>
+        <span class="skill-level">Learning</span>
+      </div>
+      <div class="skill-name">React</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:40%;background:#2E6B9E;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#F8EDF2;color:#9E3A5A;"><i class="fa-solid fa-database"></i></div>
+        <span class="skill-level">Beginner</span>
+      </div>
+      <div class="skill-name">SQL</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:40%;background:#9E3A5A;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#FDF0E8;color:#C4622D;"><i class="fa-brands fa-git-alt"></i></div>
+        <span class="skill-level">Intermediate</span>
+      </div>
+      <div class="skill-name">Git / GitHub</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:60%;background:#C4622D;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#E8F5EF;color:#3A7D6E;"><i class="fa-solid fa-leaf"></i></div>
+        <span class="skill-level">Beginner</span>
+      </div>
+      <div class="skill-name">MongoDB</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:40%;background:#3A7D6E;"></div></div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-top">
+        <div class="skill-icon" style="background:#FDF0E8;color:#C4622D;"><i class="fa-brands fa-java"></i></div>
+        <span class="skill-level">Learner</span>
+      </div>
+      <div class="skill-name">Java</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:25%;background:#C4622D;"></div></div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-label">What I've built</div>
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <div class="proj-badge" style="background:#E8F0F8;color:#2E6B9E;">
+        <i class="fa-solid fa-link"></i> Blockchain
+      </div>
+      <div class="proj-title">NFT Charity Auction</div>
+      <div class="proj-desc">A decentralized platform to auction NFTs for charitable causes. Users can mint, list, and bid on NFTs with proceeds going directly to charity.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Solidity</span>
+        <span class="proj-tag">React</span>
+        <span class="proj-tag">Web3.js</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kishanpandit646/NFT_charity_auction" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge" style="background:#E8F0F8;color:#2E6B9E;">
+        <i class="fa-solid fa-link"></i> Blockchain
+      </div>
+      <div class="proj-title">Simple Tipping dApp</div>
+      <div class="proj-desc">A decentralized application that allows users to send crypto tips to content creators or anyone on the blockchain network.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Solidity</span>
+        <span class="proj-tag">JavaScript</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kishanpandit646/Simple-tipping-dApp" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge" style="background:#FDF0E8;color:#C4622D;">
+        <i class="fa-solid fa-globe"></i> Web Dev
+      </div>
+      <div class="proj-title">Book Store</div>
+      <div class="proj-desc">A full-stack online bookstore application where users can browse, search, and manage books with a backend powered by Node.js.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Node.js</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kishanpandit646/book_store" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge" style="background:#F8EDF2;color:#9E3A5A;">
+        <i class="fa-solid fa-trophy"></i> Hackathon
+      </div>
+      <div class="proj-title">AceHack 5.0</div>
+      <div class="proj-desc">A project built during AceHack 5.0 hackathon. Developed a solution using Python and Flask under competitive time constraints.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">Flask</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Dark-97o/AceHack5.0_DEV" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge" style="background:#E8F0F8;color:#2E6B9E;">
+        <i class="fa-solid fa-link"></i> Blockchain
+      </div>
+      <div class="proj-title">Token Airdrop Contract</div>
+      <div class="proj-desc">A Solidity smart contract that automates the distribution of tokens to multiple wallet addresses in a single transaction.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Solidity</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kishanpandit646/Token-_Airdrop-_Contract" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-badge" style="background:#E8F5EF;color:#3A7D6E;">
+        <i class="fa-brands fa-python"></i> Python / ML
+      </div>
+      <div class="proj-title">Insurance Claim Processor</div>
+      <div class="proj-desc">An AI-powered insurance claim processing system that uses Machine Learning to automate and classify insurance claims efficiently.</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">ML</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kishanpandit646/Insurance-ClaimProcessor" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ACHIEVEMENTS -->
+<section class="section" id="achievements">
+  <div class="section-label">What I've done</div>
+  <div class="section-title">Achievements & Activities</div>
+  <div class="achieve-list">
+
+    <div class="achieve-item">
+      <div class="achieve-icon" style="background:#F8EDF2;color:#9E3A5A;">
+        <i class="fa-solid fa-laptop-code"></i>
+      </div>
+      <div>
+        <div class="achieve-title">Hackathon Participation</div>
+        <div class="achieve-sub">Add the hackathon name, position, and year here</div>
+      </div>
+    </div>
+
+    <div class="achieve-item">
+      <div class="achieve-icon" style="background:#FFF8E1;color:#B8860B;">
+        <i class="fa-solid fa-people-group"></i>
+      </div>
+      <div>
+        <div class="achieve-title">Club / Society Role</div>
+        <div class="achieve-sub">e.g. Technical Head, Coding Club — Your College Name</div>
+      </div>
+    </div>
+
+    <div class="achieve-item">
+      <div class="achieve-icon" style="background:#E8F5EF;color:#3A7D6E;">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <div>
+        <div class="achieve-title">Academic Achievement</div>
+        <div class="achieve-sub">e.g. Semester rank, scholarship, or award</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CERTIFICATIONS -->
+<section class="section" id="certifications">
+  <div class="section-label">Certificates</div>
+  <div class="section-title">Certifications</div>
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <i class="fa-solid fa-certificate"></i>
+      <div>
+        <div class="cert-name">Add Certificate Name</div>
+        <div class="cert-issuer">Platform (e.g. Coursera, NPTEL)</div>
+      </div>
+    </div>
+
+    <div class="cert-card" style="border-left-color:#3A7D6E;">
+      <i class="fa-solid fa-certificate" style="color:#3A7D6E;"></i>
+      <div>
+        <div class="cert-name">Another Certificate</div>
+        <div class="cert-issuer">Platform • Year</div>
+      </div>
+    </div>
+
+    <div class="cert-card" style="border-left-color:#9E3A5A;">
+      <i class="fa-solid fa-certificate" style="color:#9E3A5A;"></i>
+      <div>
+        <div class="cert-name">Third Certificate</div>
+        <div class="cert-issuer">Platform • Year</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="section-title">Contact</div>
+  <p style="color:var(--text2);font-size:0.9rem;max-width:460px;line-height:1.7;">I'm open to internship opportunities, collaborations, and connecting with fellow developers. Feel free to reach out !</p>
+  <div class="contact-row">
+    <a href="mailto:your@email.com" class="contact-chip">
+      <i class="fa-solid fa-envelope" style="color:#C4622D;"></i> panditkishan646@email.com
+    </a>
+    <a href="https://www.linkedin.com/in/kishan-pandit-80b3b5251/?skipRedirect=true" target="_blank" class="contact-chip">
+      <i class="fa-brands fa-linkedin" style="color:#2E6B9E;"></i> LinkedIn
+    </a>
+    <a href="https://github.com/kishanpandit646" target="_blank" class="contact-chip">
+      <i class="fa-brands fa-github" style="color:#1a1714;"></i> GitHub
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  Made with <span>&#9829;</span> by Kishan Pandit &nbsp;·&nbsp; B.Tech CSE
+</footer>
+
+</body>
+</html>
